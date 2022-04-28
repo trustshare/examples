@@ -1,7 +1,7 @@
-import { CheckoutResult } from '@trustshare/sdk';
+import type { CheckoutResult as CheckoutResultType } from '@trustshare/sdk';
 
 // For illustration purposes, we're using a simple component that renders a result from a checkout.
-export function CheckoutResult(props: { checkout: CheckoutResult }) {
+export function CheckoutResult(props: { checkout: CheckoutResultType }) {
   return (
     <div className="grid place-items-center h-screen">
       <div className="text-center">
