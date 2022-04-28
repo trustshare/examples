@@ -1,24 +1,32 @@
 import { products } from 'utils/constants';
 import sdk from '@trustshare/sdk';
+import type { CheckoutResult as CheckoutResultType } from '@trustshare/sdk';
+import { useState } from 'react';
+import { CheckoutResult } from 'components/CheckoutResult';
 
 function convertToPounds(price: number) {
   return `£${(price / 100).toFixed(2)}`;
 }
 
 export function ShoppingCart({ clientSecret }: { clientSecret: string }) {
+  const [checkout, setCheckout] = useState<CheckoutResultType | null>(null);
+
   async function handleClick() {
     const trustshare = sdk(process.env.NEXT_PUBLIC_TS_PUBLIC_KEY ?? '');
-    await trustshare.sdk.v1.confirmPaymentIntent(clientSecret);
+    const result = await trustshare.sdk.v1.confirmPaymentIntent(clientSecret);
+    setCheckout(result);
   }
 
-  return (
+  return checkout ? (
+    <CheckoutResult checkout={checkout} />
+  ) : (
     <div className="grid place-items-center h-screen">
       <div className="pointer-events-auto w-screen max-w-md">
         <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
           <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
             <div className="w-full">
               <img
-                className="w-1/2 m-a pb-4 self-center"
+                className="w-1/2 m-a p-2 m-auto"
                 alt={'trustshare logo'}
                 src={'https://assets.trustshare.io/3B8uJNZDzdR2MyJTw3.png'}
               />
