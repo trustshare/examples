@@ -1,5 +1,5 @@
 {
-  "name": "trustshare-basic-checkout-example",
+  "name": "@nextjs/trustshare-basic-checkout-example",
   "version": "0.0.1",
   "private": true,
   "scripts": {
