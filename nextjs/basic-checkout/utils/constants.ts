@@ -1,4 +1,4 @@
-import { SettlementInput } from '@trustshare/api';
+import { ParticipantType, SettlementInput } from '@trustshare/api';
 import { SettlementType } from '@trustshare/api/dist/types/types';
 
 export const products = [
@@ -12,7 +12,7 @@ export const products = [
     intent: {
       type: 'escrow',
       to: {
-        type: 'individual',
+        type: 'individual' as ParticipantType,
         email: 'e2e+test+target+one@trustshare.co',
         name: 'Joe Smith',
       },
@@ -28,7 +28,7 @@ export const products = [
     intent: {
       type: 'immediate',
       to: {
-        type: 'individual',
+        type: 'individual' as ParticipantType,
         email: 'e2e+test+target+two@trustshare.co',
         name: 'Barry Bonds',
       },
