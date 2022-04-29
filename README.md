@@ -5,6 +5,18 @@ We will aim to provide multiple examples of how to use the trustshare api and sd
 
 Please let us know if you have any questions or suggestions.
 
+## Dependencies
+To install all dependencies, in the root of the project run
+
+```bash
+yarn
+``` 
+If you dont want to use yarn workspaces, you can use the following command in the separate folders:
+
+```bash
+npm install
+```
+
 ## Workspaces
 The different examples are managed by [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/). Different examples can be run using the following command:
 
@@ -16,3 +28,20 @@ for example
 ```bash
 yarn workspace @nextjs/trustshare-basic-checkout-example dev
 ```
+
+Alternatively, you can change directory into each example and run them for that directory using
+
+```bash
+npm run dev
+```
+
+## StackBlitz
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/trustshare/examples)
+
+When running in stackblitz, you will need to change directory into the example folder and install dependencies, as workspaces are not supported.
+
+## Readme
+Each example has a readme file, which contains instructions on how to run the example. Each example will need API keys to run. 
+
+## Questions / Improvements
+Please let us know if you have any questions or suggestions. We're happy to help.
