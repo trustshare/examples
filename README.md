@@ -36,7 +36,7 @@ npm run dev
 ```
 
 ## StackBlitz
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/trustshare/examples)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/trustshare/examples?file=readme.md)
 
 When running in stackblitz, you will need to change directory into the example folder and install dependencies, as workspaces are not supported.
 
