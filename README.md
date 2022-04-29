@@ -38,7 +38,7 @@ npm run dev
 ## StackBlitz
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/trustshare/examples?file=readme.md)
 
-When running in stackblitz, you will need to change directory into the example folder and install dependencies, as workspaces are not supported.
+When running in StackBlitz, you will need to change directory into the example folder and install dependencies, as workspaces are not supported.
 
 ## Readme
 Each example has a readme file, which contains instructions on how to run the example. Each example will need API keys to run. 
