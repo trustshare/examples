@@ -13,7 +13,7 @@ const Checkout: NextPage<{ currency: Currency }> = ({ currency }) => {
   }
 
   return (
-    <div>
+    <div className="grid place-items-center h-screen">
       <button
         className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
         onClick={handleClick}
