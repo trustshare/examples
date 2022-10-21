@@ -1,10 +1,12 @@
+import type { Products } from './constants';
+
 function convertToPounds(price: number) {
   return `£${(price / 100).toFixed(2)}`;
 }
 
 type Props = {
   handleClick: () => Promise<void>;
-  products: any[];
+  products: Products;
 };
 
 export function ShoppingCart(props: Props) {

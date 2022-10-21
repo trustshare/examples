@@ -1,3 +1,4 @@
+import React from 'react';
 import type { CheckoutResult as CheckoutResultType } from '@trustshare/sdk';
 
 // For illustration purposes, we're using a simple component that renders a result from a checkout.

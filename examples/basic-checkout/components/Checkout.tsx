@@ -1,9 +1,9 @@
-import { products } from 'utils/constants';
-import sdk from '@trustshare/sdk';
-import type { CheckoutResult as CheckoutResultType } from '@trustshare/sdk';
-import { useState } from 'react';
 import { CheckoutResult } from '@package/components/src/CheckoutResult';
+import { products } from '@package/components/src/constants';
 import { ShoppingCart } from '@package/components/src/ShoppingCart';
+import type { CheckoutResult as CheckoutResultType } from '@trustshare/sdk';
+import sdk from '@trustshare/sdk';
+import { useState } from 'react';
 
 export function Checkout({ clientSecret }: { clientSecret: string }) {
   const [checkout, setCheckout] = useState<CheckoutResultType | null>(null);
