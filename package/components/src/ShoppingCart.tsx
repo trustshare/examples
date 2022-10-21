@@ -1,25 +1,15 @@
-import { products } from 'utils/constants';
-import sdk from '@trustshare/sdk';
-import type { CheckoutResult as CheckoutResultType } from '@trustshare/sdk';
-import { useState } from 'react';
-import { CheckoutResult } from 'components/CheckoutResult';
-
 function convertToPounds(price: number) {
   return `£${(price / 100).toFixed(2)}`;
 }
 
-export function ShoppingCart({ clientSecret }: { clientSecret: string }) {
-  const [checkout, setCheckout] = useState<CheckoutResultType | null>(null);
+type Props = {
+  handleClick: () => Promise<void>;
+  products: any[];
+};
 
-  async function handleClick() {
-    const trustshare = sdk(process.env.NEXT_PUBLIC_TS_PUBLIC_KEY ?? '');
-    const result = await trustshare.sdk.v1.confirmPaymentIntent(clientSecret);
-    setCheckout(result);
-  }
-
-  return checkout ? (
-    <CheckoutResult checkout={checkout} />
-  ) : (
+export function ShoppingCart(props: Props) {
+  const { handleClick, products } = props;
+  return (
     <div className="grid place-items-center h-screen">
       <div className="pointer-events-auto w-screen max-w-md">
         <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
@@ -48,7 +38,7 @@ export function ShoppingCart({ clientSecret }: { clientSecret: string }) {
                         <div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <h3>
-                              <span> {product.name}</span>
+                              <span>{product.name}</span>
                             </h3>
                             <p className="ml-4">
                               {convertToPounds(product.price)}

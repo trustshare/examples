@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { ShoppingCart } from 'components/ShoppingCart';
+import { Checkout } from 'components/Checkout';
 import type { PaymentIntent } from '@trustshare/api';
 import ts from '@trustshare/api';
 import { settlements } from 'utils/constants';
@@ -8,8 +8,7 @@ import { TestComponent } from '@package/components/src/TestComponent';
 const Home: NextPage<{ client_secret: string }> = ({ client_secret }) => {
   return (
     <>
-      <TestComponent />
-      <ShoppingCart clientSecret={client_secret} />)
+      <Checkout clientSecret={client_secret} />)
     </>
   );
 };
