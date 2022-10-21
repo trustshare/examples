@@ -20,7 +20,7 @@ export function ShoppingCart(props: Props) {
               <img
                 className="w-1/2 m-a p-2 m-auto"
                 alt={'trustshare logo'}
-                src={'https://assets.trustshare.io/3B8uJNZDzdR2MyJTw3.png'}
+                src={'https://assets.trustshare.io/3gf8PN3KyUPi1HQY5v.png'}
               />
             </div>
 
