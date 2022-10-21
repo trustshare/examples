@@ -6,16 +6,16 @@ import sdk from '@trustshare/sdk';
 import { useState } from 'react';
 
 export function Checkout({ clientSecret }: { clientSecret: string }) {
-  const [checkout, setCheckout] = useState<CheckoutResultType | null>(null);
+  const [checkoutResult, setCheckoutResult] = useState<CheckoutResultType | null>(null);
 
   async function handleClick() {
-    const trustshare = sdk(process.env.NEXT_PUBLIC_TS_PUBLIC_KEY ?? '');
+    const trustshare = sdk(process.env.NEXT_PUBLIC_TRUSTSHARE_PUBLIC_KEY ?? '');
     const result = await trustshare.sdk.v1.confirmPaymentIntent(clientSecret);
-    setCheckout(result);
+    setCheckoutResult(result);
   }
 
-  return checkout ? (
-    <CheckoutResult checkout={checkout} />
+  return checkoutResult ? (
+    <CheckoutResult checkout={checkoutResult} />
   ) : (
     <ShoppingCart handleClick={handleClick} products={products} />
   );
