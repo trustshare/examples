@@ -10,5 +10,8 @@
       "examples/*",
       "package/*"
     ]
+  },
+  "dependencies": {
+    "@trustshare/sdk": "^0.0.12"
   }
 }
