@@ -3,9 +3,15 @@ import { ShoppingCart } from 'components/ShoppingCart';
 import type { PaymentIntent } from '@trustshare/api';
 import ts from '@trustshare/api';
 import { settlements } from 'utils/constants';
+import { TestComponent } from '@package/components/src/TestComponent';
 
 const Home: NextPage<{ client_secret: string }> = ({ client_secret }) => {
-  return <ShoppingCart clientSecret={client_secret} />;
+  return (
+    <>
+      <TestComponent />
+      <ShoppingCart clientSecret={client_secret} />)
+    </>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
