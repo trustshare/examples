@@ -13,19 +13,18 @@ const Checkout: NextPage = (
           It can be sent to people or used to open checkouts in their own
           windows, outside of the sdk.
         </p>
-        <a
-          className="underline font-bold"
-          rel="noreferrer"
-          href={props.url}
-          target="_blank"
-        >
+        <p>
+          After the checkout has been completed, it will redirect to the app
+          redirect route.
+        </p>
+        <a className="underline font-bold" rel="noreferrer" href={props.url}>
           {props.url}
         </a>
       </div>
     </div>
   );
 };
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const trustshare = ts(process.env.TRUSTSHARE_PRIVATE_API_KEY ?? '');
 
   const {
@@ -35,7 +34,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   } = await trustshare.api.v1.createPaymentIntent({
     type: 'payment_link',
     currency: 'gbp',
-    //redirect_url: 'https://foobar.com',
+    // This will redirect to the app route. See /pages/redirect.tsx
+    redirect_url: `http://localhost:${req.socket.localPort}/redirect`,
     from: {
       email: `e2e@trustshare.co`,
       type: 'individual',
