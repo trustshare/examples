@@ -15,7 +15,15 @@ const Redirect = (
   // See the invoice data in the console.
   console.log(props.data);
 
-  const { participant, created_at, settlements, account } = props.data;
+  const {
+    participant,
+    created_at,
+    settlements,
+    account,
+    total,
+    subtotal,
+    fee,
+  } = props.data;
 
   return (
     <div>
@@ -71,6 +79,7 @@ const Redirect = (
         </div>
 
         <div>
+          <h2 className="text-xl mb-5">Line items:</h2>
           <ul>
             {settlements.map((settlement) => {
               return (
@@ -86,9 +95,6 @@ const Redirect = (
                       <span>To be paid before</span>{' '}
                       {new Date(settlement.required_by).toLocaleDateString()}
                     </div>
-                    <div className="text-xs underline font-bold">
-                      {settlement.id}
-                    </div>
                   </div>
                   <div className="text-right font-medium">
                     {convertPenniesToPounds(settlement.amount)}
@@ -100,19 +106,34 @@ const Redirect = (
         </div>
 
         <div className="flex justify-between items-center mb-2 px-3">
-          <div className="text-2xl leading-none">
-            <span className="">Total</span>:
+          <div className="text-md leading-none">
+            <span className="">Subtotal</span>:
           </div>
-          <div className="text-2xl text-right font-medium">
-            {convertPenniesToPounds(
-              settlements.reduce((total, settlement) => {
-                return total + settlement.amount;
-              }, 0)
-            )}
+          <div className="text-md text-right font-medium">
+            {convertPenniesToPounds(subtotal)}
           </div>
         </div>
 
-        <div className="mb-8 text-md px-3">
+        <div className="flex justify-between items-center mb-2 px-3">
+          <div className="text-md leading-none">
+            <span className="">Fee</span>:
+          </div>
+          <div className="text-md text-right font-medium">
+            {convertPenniesToPounds(fee)}
+          </div>
+        </div>
+
+        <div className="flex justify-between items-center mb-2 px-3">
+          <div className="text-xl leading-none">
+            <span className="">Total (inc fee)</span>:
+          </div>
+          <div className="text-xl text-right font-medium">
+            {convertPenniesToPounds(total)}
+          </div>
+        </div>
+
+        <h2 className="text-xl mb-5 mt-10">Payment Information:</h2>
+        <div className="mb-8 text-md p-5 bg-gray-200">
           <span>Please pay into the following bank details:</span>
           <p>Acc Number: {account.account_number}</p>
           <p>IBAN: {account.iban}</p>
