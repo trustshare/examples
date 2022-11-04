@@ -26,7 +26,7 @@ yarn workspace ${workspace_name} dev
 for example
 
 ```bash
-yarn workspace @nextjs/trustshare-basic-checkout-example dev
+yarn workspace @examples/trustshare-basic-checkout-example dev
 ```
 
 Alternatively, you can change directory into each example and run them for that directory using
@@ -45,3 +45,7 @@ Each example has a readme file, which contains instructions on how to run the ex
 
 ## Questions / Improvements
 Please let us know if you have any questions or suggestions. We're happy to help.
+
+<!-- TODD:  -->
+
+Link to the examples

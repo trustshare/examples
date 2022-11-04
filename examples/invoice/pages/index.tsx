@@ -2,6 +2,7 @@ import ts, { PaymentIntent } from '@trustshare/api';
 import sdk, { CheckoutResult } from '@trustshare/sdk';
 import type { InferGetServerSidePropsType, NextPage } from 'next';
 import { GetServerSideProps } from 'next';
+
 import { useState } from 'react';
 
 const Checkout: NextPage = (
@@ -14,7 +15,11 @@ const Checkout: NextPage = (
   async function handleClick(clientSecret: string) {
     const trustshare = sdk(process.env.TRUSTSHARE_PUBLIC_API_KEY ?? '');
     const result = await trustshare.sdk.v1.confirmPaymentIntent(clientSecret);
-    setInvoiceResponse(result);
+    const url = new URL(`http://localhost:${props.port}/invoice`);
+    url.searchParams.append('checkout_id', result.checkout_id);
+    url.searchParams.append('project_id', result.project_id);
+    url.searchParams.append('invoice_id', result.invoice_id as string);
+    (window as Window).location = url.toString();
   }
 
   return (
@@ -47,9 +52,11 @@ const Checkout: NextPage = (
     </div>
   );
 };
-export const getServerSideProps: GetServerSideProps = async () => {
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const trustshare = ts(process.env.TRUSTSHARE_PRIVATE_API_KEY ?? '');
 
+  const port = req.socket.localPort;
   // FIrst you have to create a project.
   const {
     api: {
@@ -111,6 +118,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       full: (full as PaymentIntent).client_secret,
+      port: port,
     },
   };
 };

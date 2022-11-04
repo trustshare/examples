@@ -1,5 +1,5 @@
 {
-  "name": "@examples/trustshare-multiple-participants-single-project-example",
+  "name": "@examples/multiple-participants-single-project",
   "version": "0.0.1",
   "private": true,
   "scripts": {

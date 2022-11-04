@@ -1,5 +1,5 @@
 {
-  "name": "@examples/trustshare-payment-link-example",
+  "name": "@examples/payment-link",
   "version": "0.0.1",
   "private": true,
   "scripts": {

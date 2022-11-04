@@ -1,5 +1,5 @@
 {
-  "name": "@examples/trustshare-verification-example",
+  "name": "@examples/verification",
   "version": "0.0.1",
   "private": true,
   "scripts": {

@@ -1,5 +1,5 @@
 {
-  "name": "@examples/trustshare-invoice-example",
+  "name": "@examples/invoice",
   "version": "0.0.1",
   "private": true,
   "scripts": {
