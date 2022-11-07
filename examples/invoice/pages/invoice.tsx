@@ -11,32 +11,27 @@ const convertPenniesToPounds = (pennies: number) => {
   }).format(pennies / 100);
 };
 
-const Redirect = (
+const Invoice = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
-  // See the invoice data in the console.
-  console.log(props.data);
-
   const {
     reference,
-    participant,
     created_at,
     settlements,
     collect,
-    account,
     total,
     subtotal,
     fee,
+    project_id,
   } = props.data;
 
   return (
-    <div>
-      <div className="mx-auto p-16 max-w-[800px]">
-        <div className="flex items-center justify-between mb-8 px-3">
+    <div className="grid place-items-center h-screen ">
+      <div className="mx-auto max-w-[800px] min-w-[600px]">
+        <div className="flex items-center justify-between mb-8">
           <div>
             <span className="text-2xl">Invoice {reference}</span>
             <br />
-            {/* pretty date */}
             <span>Date</span>: {new Date(created_at).toLocaleDateString()}
             <br />
           </div>
@@ -45,49 +40,23 @@ const Redirect = (
           </div>
         </div>
 
-        <div className="text-right mb-8 px-3">
-          {participant.name}
-          <br />
-          {participant.address?.address_line_1}
-          <br />
-          {participant.address?.address_line_2}
-          <br />
-          {participant.address?.town_city}
-          <br />
-          {participant.address?.postal_code}
-        </div>
-
         <div className="border border-t-2 border-gray-200 mb-8 px-3"></div>
 
-        <div className="mb-8 px-3">
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            aliquam vestibulum elit, id rutrum sem lobortis eget. In a massa et
-            leo vehicula dapibus. In convallis ut nisi ut vestibulum. Integer
-            non feugiat tellus. Nullam id ex suscipit, volutpat sapien
-            tristique, porttitor sapien.
-          </p>
-        </div>
-
         <div>
-          <h2 className="text-xl mb-5">Line items:</h2>
           <ul>
             {settlements.map((settlement) => {
               return (
                 <div
                   key={settlement.id}
-                  className="flex justify-between mb-4 bg-gray-200 px-3 py-2"
+                  className="flex justify-between mb-2 py-2"
                 >
                   <div>
-                    <div className="text-md">{settlement.summary}</div>
-                    <div className="text-xs">{settlement.description}</div>
-
-                    <div className="text-xs">
-                      <span>To be paid before</span>{' '}
-                      {new Date(settlement.required_by).toLocaleDateString()}
+                    <div className="font-bold text-md">
+                      {settlement.description}
                     </div>
+                    <div className="text-md">{settlement.summary}</div>
                   </div>
-                  <div className="text-right font-medium">
+                  <div className="text-right font-medium tabular-nums">
                     {convertPenniesToPounds(settlement.amount)}
                   </div>
                 </div>
@@ -95,46 +64,58 @@ const Redirect = (
             })}
           </ul>
         </div>
+        <div className="border border-t-2 border-gray-200 px-3 my-8"></div>
 
-        <div className="flex justify-between items-center mb-2 px-3">
+        <div className="flex justify-between items-center mb-2">
           <div className="text-md leading-none">
             <span className="">Subtotal</span>:
           </div>
-          <div className="text-md text-right font-medium">
+          <div className="text-md text-right font-medium tabular-nums">
             {convertPenniesToPounds(subtotal)}
           </div>
         </div>
 
-        <div className="flex justify-between items-center mb-2 px-3">
+        <div className="flex justify-between items-center mb-2">
           <div className="text-md leading-none">
             <span className="">Fee</span>:
           </div>
-          <div className="text-md text-right font-medium">
+          <div className="text-md text-right font-medium tabular-nums">
             {convertPenniesToPounds(fee)}
           </div>
         </div>
 
-        <div className="flex justify-between items-center mb-2 px-3">
-          <div className="text-xl leading-none">
+        <div className="flex justify-between items-center mb-2">
+          <div className="text-md font-bold leading-none">
             <span className="">Total (inc fee)</span>:
           </div>
-          <div className="text-xl text-right font-medium">
+          <div className="text-md font-bold text-right tabular-nums">
             {convertPenniesToPounds(total)}
           </div>
         </div>
-
         <h2 className="text-xl mt-10">Payment Information:</h2>
-        <div className='mb-5'>Please pay into the following bank details:</div>
+        <div className="mb-5">Please pay into the following bank details:</div>
         <div className="mb-8 text-md p-5 bg-gray-200">
-          <p>Acc Number: {collect.local_bank_transfer.account_number}</p>
+          <p>
+            Acc Number:{' '}
+            <span className="tabular-nums">
+              {collect.local_bank_transfer.account_number}
+            </span>
+          </p>
           <p>
             Sort Code:{' '}
-            {collect.local_bank_transfer.routing_data[0].routing_code}
+            <span className="tabular-nums">
+              {collect.local_bank_transfer.routing_data[0].routing_code}
+            </span>
           </p>
         </div>
 
         <div className="mb-8 text-4xl text-center px-3">
-          <span>Thank you!</span>
+          <a
+            href={`/credit?project_id=${project_id}&reference=${reference}&amount=${total}`}
+            className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 disabled:cursor-not-allowed"
+          >
+            Credit Invoice (Only in Sandbox)
+          </a>
         </div>
       </div>
     </div>
@@ -159,4 +140,4 @@ export const getServerSideProps: GetServerSideProps<{
   };
 };
 
-export default Redirect;
+export default Invoice;

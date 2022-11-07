@@ -9,7 +9,6 @@ const Checkout: NextPage<{ currency: Currency }> = ({ currency }) => {
     const result = await trustshare.sdk.v1.createDirectCheckout({
       currency,
     });
-    console.log({ result });
   }
 
   return (

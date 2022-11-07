@@ -24,6 +24,16 @@ const Checkout: NextPage = (
   return (
     <div className="grid place-items-center h-screen">
       <div className="text-center">
+        <p className="mb-2">
+          By clicking the button below you agree to the terms and conditions
+          outlined{' '}
+          <a
+            className="underline text-indigo-500"
+            href="https://checkout.trustshare.io/buyer-terms.pdf"
+          >
+            here
+          </a>
+        </p>
         <button
           type="button"
           className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 disabled:cursor-not-allowed"
@@ -53,45 +63,15 @@ const Checkout: NextPage = (
               ></path>
             </svg>
           ) : null}
-          {loading ? 'Processing...' : 'Confirm invoice now (full details)'}
+          {loading ? 'Processing...' : 'Confirm invoice'}
         </button>
       </div>
     </div>
   );
 };
 
-function makeRandomSettlement(index: number) {
-  const amount = Math.floor(Math.random() * 100000);
-  const fee = Math.floor(Math.random() * 1000);
-  return {
-    type: 'escrow',
-    amount: amount,
-    description: `Paying Third Party ${index}`,
-    summary: 'Local Outbound',
-    fee_flat: fee,
-    to: {
-      type: 'third_party',
-      email: `e2e+${index}@trustshare.co`,
-      name: 'Third Party 1',
-      address: {
-        address_line_1: '1 Third Party Way',
-        town_city: 'Third Party City',
-        postal_code: 'TP1 1PT',
-        country: 'GB' as Country,
-      },
-      bank_account: {
-        country: 'GB',
-        currency: 'gbp',
-        account_number: '01139097',
-        sort_code: '309455',
-      },
-    },
-  } as SettlementInput;
-}
-
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const trustshare = ts(process.env.TRUSTSHARE_PRIVATE_API_KEY ?? '');
-  console.log(trustshare);
   const port = req.socket.localPort;
   // First you have to create a project.
   const {
@@ -101,8 +81,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   } = await trustshare.api.v1.createProject({
     currency: 'gbp',
   });
-
-  console.log({ project });
 
   const {
     api: {
@@ -125,7 +103,28 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
         country: 'GB',
       },
     },
-    settlements: Array.from({ length: 5 }, (_, i) => makeRandomSettlement(i)),
+    settlements: [
+      {
+        type: 'escrow',
+        amount: 200000,
+        description: `Discombobulator Widget`,
+        summary: 'Quantity: 500',
+        fee_flat: 1000,
+        to: {
+          email: `sink@trustshare.co`,
+        },
+      },
+      {
+        type: 'escrow',
+        amount: 500000,
+        description: `Rotator Flange`,
+        summary: 'Quantity: 1500',
+        fee_flat: 1000,
+        to: {
+          email: `sink@trustshare.co`,
+        },
+      },
+    ],
   });
 
   return {
