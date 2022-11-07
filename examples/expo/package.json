@@ -1,0 +1,36 @@
+{
+  "name": "@examples/expo",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "workspaces": {
+    "nohoist": [
+      "**"
+    ]
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "server": "tsx ./server/server.ts"
+  },
+  "dependencies": {
+    "fastify": "^4.9.2",
+    "dotenv": "16.0.3",
+    "expo": "~46.0.16",
+    "expo-status-bar": "~1.4.0",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-native": "0.69.6",
+    "react-native-web": "~0.18.7",
+    "react-native-webview": "11.23.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@types/react": "~18.0.14",
+    "@types/react-native": "~0.69.1",
+    "typescript": "~4.3.5",
+    "tsx": "3.11.0"
+  },
+  "private": true
+}
