@@ -26,7 +26,7 @@ yarn workspace ${workspace_name} dev
 for example
 
 ```bash
-yarn workspace @examples/trustshare-basic-checkout-example dev
+yarn workspace @examples/basic-checkout dev
 ```
 
 Alternatively, you can change directory into each example and run them for that directory using
