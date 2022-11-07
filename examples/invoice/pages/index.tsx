@@ -1,4 +1,4 @@
-import ts, { PaymentIntent } from '@trustshare/api';
+import ts, { Country, PaymentIntent, SettlementInput } from '@trustshare/api';
 import sdk, { CheckoutResult } from '@trustshare/sdk';
 import type { InferGetServerSidePropsType, NextPage } from 'next';
 import { GetServerSideProps } from 'next';
@@ -8,11 +8,8 @@ import { useState } from 'react';
 const Checkout: NextPage = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
-  const [invoiceResponse, setInvoiceResponse] = useState<null | CheckoutResult>(
-    null
-  );
-
   async function handleClick(clientSecret: string) {
+    setLoading(true);
     const trustshare = sdk(process.env.TRUSTSHARE_PUBLIC_API_KEY ?? '');
     const result = await trustshare.sdk.v1.confirmPaymentIntent(clientSecret);
     const url = new URL(`http://localhost:${props.port}/invoice`);
@@ -22,42 +19,81 @@ const Checkout: NextPage = (
     (window as Window).location = url.toString();
   }
 
+  const [loading, setLoading] = useState(false);
+
   return (
     <div className="grid place-items-center h-screen">
       <div className="text-center">
         <button
-          disabled={invoiceResponse != null}
-          className="flex items-center justify-center rounded-md border disabled:bg-gray-500 border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+          type="button"
+          className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 disabled:cursor-not-allowed"
+          disabled={loading}
           onClick={() => handleClick(props.full)}
         >
-          Confirm invoice now (full details)
-        </button>
-        {invoiceResponse ? (
-          <div>
-            <div>You confirmed the invoice intent:</div>
-            <p>Invoice ID: {invoiceResponse.invoice_id}</p>
-            <p>Checkout ID: {invoiceResponse.checkout_id}</p>
-            <p>Project ID: {invoiceResponse.project_id}</p>
-            <a
-              className="underline font-bold"
-              target={'_blank'}
-              rel={'noreferrer'}
-              href={`https://dashboard.trustshare.io/project/${invoiceResponse.project_id}`}
+          {loading ? (
+            <svg
+              className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              data-motion-id="svg 1"
             >
-              View project
-            </a>
-          </div>
-        ) : null}
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+          ) : null}
+          {loading ? 'Processing...' : 'Confirm invoice now (full details)'}
+        </button>
       </div>
     </div>
   );
 };
 
+function makeRandomSettlement(index: number) {
+  const amount = Math.floor(Math.random() * 100000);
+  const fee = Math.floor(Math.random() * 1000);
+  return {
+    type: 'escrow',
+    amount: amount,
+    description: `Paying Third Party ${index}`,
+    summary: 'Local Outbound',
+    fee_flat: fee,
+    to: {
+      type: 'third_party',
+      email: `e2e+${index}@trustshare.co`,
+      name: 'Third Party 1',
+      address: {
+        address_line_1: '1 Third Party Way',
+        town_city: 'Third Party City',
+        postal_code: 'TP1 1PT',
+        country: 'GB' as Country,
+      },
+      bank_account: {
+        country: 'GB',
+        currency: 'gbp',
+        account_number: '01139097',
+        sort_code: '309455',
+      },
+    },
+  } as SettlementInput;
+}
+
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const trustshare = ts(process.env.TRUSTSHARE_PRIVATE_API_KEY ?? '');
-
+  console.log(trustshare);
   const port = req.socket.localPort;
-  // FIrst you have to create a project.
+  // First you have to create a project.
   const {
     api: {
       v1: { createProject: project },
@@ -65,6 +101,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   } = await trustshare.api.v1.createProject({
     currency: 'gbp',
   });
+
+  console.log({ project });
 
   const {
     api: {
@@ -87,32 +125,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
         country: 'GB',
       },
     },
-    settlements: [
-      {
-        type: 'escrow',
-        amount: 100000,
-        description: 'Paying Third Party 1',
-        summary: 'Local Outbound',
-        fee_flat: 250,
-        to: {
-          type: 'third_party',
-          email: 'third_party+1@trustshare.co',
-          name: 'Third Party 1',
-          address: {
-            address_line_1: '1 Third Party Way',
-            town_city: 'Third Party City',
-            postal_code: 'TP1 1PT',
-            country: 'GB',
-          },
-          bank_account: {
-            country: 'GB',
-            currency: 'gbp',
-            account_number: '01139097',
-            sort_code: '309455',
-          },
-        },
-      },
-    ],
+    settlements: Array.from({ length: 5 }, (_, i) => makeRandomSettlement(i)),
   });
 
   return {

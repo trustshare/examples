@@ -1,5 +1,7 @@
 import ts, { GetInvoiceQuery } from '@trustshare/api';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import logo from 'assets/logo.png';
+import Image from 'next/image';
 
 const convertPenniesToPounds = (pennies: number) => {
   // Use Intl.NumberFormat to format the amount as a currency.
@@ -16,9 +18,11 @@ const Redirect = (
   console.log(props.data);
 
   const {
+    reference,
     participant,
     created_at,
     settlements,
+    collect,
     account,
     total,
     subtotal,
@@ -30,40 +34,27 @@ const Redirect = (
       <div className="mx-auto p-16 max-w-[800px]">
         <div className="flex items-center justify-between mb-8 px-3">
           <div>
-            <span className="text-2xl">Example Invoice #</span>: 0001-2019
+            <span className="text-2xl">Invoice {reference}</span>
             <br />
             {/* pretty date */}
             <span>Date</span>: {new Date(created_at).toLocaleDateString()}
             <br />
           </div>
-          <div className="text-right">
-            <img src="https://www.trustshare.co/assets/logo.0310971b.svg" />
+          <div className="max-w-[300px]">
+            <Image width="200px" height="50px" src={logo} alt="Company Logo" />
           </div>
         </div>
 
-        <div className="flex justify-between mb-8 px-3">
-          <div>
-            Pixel &amp; Tonic
-            <br />
-            919 NW Bond St. Ste 203
-            <br />
-            Bend, OR 97703 USA
-            <br />
-            hello@pixelandtonic.com
-            <br />
-            +1 855-700-5115
-          </div>
-          <div className="text-right">
-            {participant.name}
-            <br />
-            {participant.address?.address_line_1}
-            <br />
-            {participant.address?.address_line_2}
-            <br />
-            {participant.address?.town_city}
-            <br />
-            {participant.address?.postal_code}
-          </div>
+        <div className="text-right mb-8 px-3">
+          {participant.name}
+          <br />
+          {participant.address?.address_line_1}
+          <br />
+          {participant.address?.address_line_2}
+          <br />
+          {participant.address?.town_city}
+          <br />
+          {participant.address?.postal_code}
         </div>
 
         <div className="border border-t-2 border-gray-200 mb-8 px-3"></div>
@@ -132,12 +123,14 @@ const Redirect = (
           </div>
         </div>
 
-        <h2 className="text-xl mb-5 mt-10">Payment Information:</h2>
+        <h2 className="text-xl mt-10">Payment Information:</h2>
+        <div className='mb-5'>Please pay into the following bank details:</div>
         <div className="mb-8 text-md p-5 bg-gray-200">
-          <span>Please pay into the following bank details:</span>
-          <p>Acc Number: {account.account_number}</p>
-          <p>IBAN: {account.iban}</p>
-          <p>Currency: {account.currency}</p>
+          <p>Acc Number: {collect.local_bank_transfer.account_number}</p>
+          <p>
+            Sort Code:{' '}
+            {collect.local_bank_transfer.routing_data[0].routing_code}
+          </p>
         </div>
 
         <div className="mb-8 text-4xl text-center px-3">
