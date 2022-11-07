@@ -9,7 +9,9 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 // Create the trustshare sdk
-const trustshare = ts(process.env.TRUSTSHARE_PRIVATE_API_KEY ?? "");
+const trustshare = ts(process.env.TRUSTSHARE_PRIVATE_API_KEY ?? "", {
+  __BASE_URL: ".nope.sh",
+});
 
 const fastify = Fastify({
   logger: true,
@@ -19,7 +21,7 @@ const fastify = Fastify({
 fastify.get("/createPaymentIntent", async (request, reply) => {
   const res = await getPaymentIntent();
   // curl GET example
-  // curl -X GET http://localhost:3000/create-payment-intent
+  // curl -X GET http://localhost:9987/createPaymentIntent
   reply.type("application/json").code(200);
   if (res.__typename === "PaymentIntent") {
     // Payment Intents have client secrets
