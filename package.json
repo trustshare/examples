@@ -11,6 +11,12 @@
       "package/*"
     ]
   },
+  "nohoist": [
+    "**/react-native",
+    "**/react-native/**",
+    "**/react-native-codegen",
+    "**/react-native-webview"
+  ],
   "dependencies": {
     "@trustshare/sdk": "^0.0.12"
   }
