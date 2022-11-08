@@ -1,16 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { WebView, WebViewNavigation } from "react-native-webview";
+import { WebView, WebViewProps } from "react-native-webview";
+
+const sharedProps: Partial<WebViewProps> = {
+  setSupportMultipleWindows: true,
+  allowsInlineMediaPlayback: true,
+  cacheEnabled: true,
+  geolocationEnabled: false,
+  javaScriptEnabled: true,
+  javaScriptCanOpenWindowsAutomatically: true,
+  mediaPlaybackRequiresUserAction: false,
+  mixedContentMode: "compatibility",
+};
 
 const App = () => {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [popupUrl, setPopupUrl] = useState<string | null>(null);
 
-  console.log("HELLO WORLD");
-
-  useEffect(() => {
-    console.log("effect");
-  }, []);
   function handleClick() {
     console.log("handle click");
     setLoading(true);
@@ -21,36 +28,80 @@ const App = () => {
       });
   }
 
-  function handleNavigationStateChange(ev: WebViewNavigation) {
-    console.log("handleNavigationStateChange", ev);
-  }
-
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Text style={styles.heading}>trustshare React Native example</Text>
-        <Button
-          disabled={loading}
-          title="Create Payment Intent"
-          onPress={handleClick}
-        ></Button>
-        {clientSecret && (
-          <WebView
-            useWebView2={true}
-            onNavigationStateChange={handleNavigationStateChange}
-            setSupportMultipleWindows={true}
-            allowsInlineMediaPlayback={true}
-            cacheEnabled={true}
-            geolocationEnabled={false}
-            javaScriptEnabled
-            javaScriptEnabledAndroid={true}
-            javaScriptCanOpenWindowsAutomatically={true}
-            mediaPlaybackRequiresUserAction={false}
-            mixedContentMode={"compatibility"}
-            source={{
-              uri: `https://checkout.nope.sh/process?s=${clientSecret}&st=0`,
+        {!clientSecret && (
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
+          >
+            <Text style={styles.heading}>trustshare React Native example</Text>
+            <Button
+              disabled={loading}
+              title="Create Payment Intent"
+              onPress={handleClick}
+            ></Button>
+          </View>
+        )}
+        {clientSecret && (
+          <View
+            style={{
+              flex: 1,
+              zIndex: 1,
+              elevation: 1,
+              position: "absolute",
+              top: 0,
+              left: 0,
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <WebView
+              onMessage={(event) => {
+                if (event.nativeEvent.data === "trustshare::close_popup") {
+                  setPopupUrl(null);
+                }
+              }}
+              onShouldStartLoadWithRequest={(req) => {
+                if (req.mainDocumentURL !== req.url) return true;
+                if (!req.url.includes(".nope.sh")) {
+                  setPopupUrl(req.url);
+                  return false;
+                }
+                return true;
+              }}
+              source={{
+                uri: `https://checkout.nope.sh/process?s=${clientSecret}&st=0`,
+              }}
+              {...sharedProps}
+            />
+          </View>
+        )}
+
+        {popupUrl && (
+          <View
+            style={{
+              flex: 1,
+              zIndex: 2,
+              elevation: 2,
+              position: "absolute",
+              top: 0,
+              left: 0,
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <WebView
+              source={{
+                uri: popupUrl,
+              }}
+              {...sharedProps}
+            />
+          </View>
         )}
       </View>
     </SafeAreaView>
