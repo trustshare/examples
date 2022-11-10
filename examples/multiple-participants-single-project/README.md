@@ -1,4 +1,4 @@
-# trustshare basic checkout
+# trustshare multiple participants in a single project
 
 
 ## Install dependencies

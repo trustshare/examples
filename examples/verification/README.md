@@ -1,4 +1,4 @@
-# trustshare basic checkout
+# trustshare verification
 
 
 ## Install dependencies

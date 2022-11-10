@@ -1,5 +1,4 @@
-# trustshare basic checkout
-
+# trustshare invoice
 
 ## Install dependencies
 ```bash

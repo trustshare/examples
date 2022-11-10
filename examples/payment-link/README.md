@@ -1,4 +1,4 @@
-# trustshare basic checkout
+# trustshare payment link
 
 
 ## Install dependencies
