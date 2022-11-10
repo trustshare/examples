@@ -78,3 +78,8 @@ The example uses our package [@trustshare/react-native-sdk](https://www.npmjs.co
 
 ### [Verification](/examples/verification)
 The verification example creates a verification for a user. trustshare offers facilities for verifying the identities and carrying out due diligence on customers which transact on the platform.
+
+### [Multiple Participants In a Single Project](/examples/multiple-participants-single-project)
+The system allows you to take control of projects by creating them up front. These are known as 'controlled' project. This example shows how a controlled project can be used to define a payment flow with multiple participants all paying into the same project. 
+
+Controlled project are very powerful and unlock many different flows. For example, you could issue a Project for a repeat buyer on your system so they have a consistent set of account credentials to pay into.
