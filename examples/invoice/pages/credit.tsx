@@ -1,9 +1,7 @@
-import ts, { Country, PaymentIntent, SettlementInput } from '@trustshare/api';
-import sdk, { CheckoutResult } from '@trustshare/sdk';
+import ts from '@trustshare/api';
 import type { InferGetServerSidePropsType, NextPage } from 'next';
 import { GetServerSideProps } from 'next';
 
-import { useState } from 'react';
 
 const Credit: NextPage = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
@@ -12,11 +10,13 @@ const Credit: NextPage = (
     <div className="grid place-items-center h-screen">
       <div className="text-center">
         <p className="mb-2">
-          We have credited your project you should start to receive webhooks now.
+          We have credited your project you should start to receive webhooks
+          now.
         </p>
 
         <a
           target="_blank"
+          rel="noreferrer"
           href={`https://dashboard.trustshare.io/project/${props.data.project_id}`}
           className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 disabled:cursor-not-allowed"
         >
@@ -38,7 +38,6 @@ export const getServerSideProps: GetServerSideProps<any> = async ({
     reference: query.reference as string,
   });
 
-  console.dir({ res }, { depth: null });
   return {
     props: {
       data: {
