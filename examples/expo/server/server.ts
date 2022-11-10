@@ -31,6 +31,22 @@ fastify.get("/createPaymentIntent", async (request, reply) => {
   }
 });
 
+fastify.get("/createVerificationIntent", async (request, reply) => {
+  const randomNumber = () => Math.random().toString(36).slice(2);
+  const res = await trustshare.api.v1.createVerification({
+    email: `simon+api+verify+${randomNumber()}@trustshare.co`,
+  });
+  // curl GET example
+  // curl -X GET http://localhost:9987/createVerificationIntent
+  reply.type("application/json").code(200);
+  if (res.api.v1.createVerification.client_secret) {
+    // Payment Intents have client secrets
+    return {
+      client_secret: res.api.v1.createVerification.client_secret,
+    };
+  }
+});
+
 fastify.listen({ port: 9987 }, (err, address) => {
   if (err) {
     throw err;

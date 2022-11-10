@@ -23,7 +23,7 @@
     "react-dom": "18.0.0",
     "react-native": "0.69.6",
     "react-native-web": "~0.18.7",
-    "react-native-webview": "11.23.0"
+    "@trustshare/react-native-sdk": "0.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
