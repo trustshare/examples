@@ -59,6 +59,10 @@ Please let us know if you have any questions or suggestions. We're happy to help
 ### [Basic Checkout](/examples/basic-checkout)
 The basic checkout example sets up a payment intent on the server side. The intent is then consumed by the client to open the trustshare checkout. It uses an example of a shopping cart, where items are passed in to the intent.
 
+```
+yarn workspace @examples/basic-checkout 
+```
+
 ### [Direct Checkout](/examples/direct-checkout)
 A direct checkout facilitates a payment between 2 parties. The example sets up a payment intent on the server side, which is then consumed by the client to open the trustshare direct checkout.
 

@@ -1879,10 +1879,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@trustshare/api@0.0.17":
-  version "0.0.17"
-  resolved "https://registry.npmjs.org/@trustshare/api/-/api-0.0.17.tgz"
-  integrity sha512-taqim51mfLgQrugjX+D7Ysl7ph1mkCoicVx64F9YZlh3pr5EHrgPcwmqRIN6PgHASI1BC43Qfz9JIP7ODsNxvA==
+"@trustshare/api@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@trustshare/api/-/api-1.0.0.tgz#d607986a300a4affc0667d46e7db59f91e7836b9"
+  integrity sha512-XIIQiT6S9DAZ9RB+mqRYJcpz517MdpQhT/xp7R2xMD0axZspgJMNsTK/g484Biw35lkDoRbIz7xI76LnGe2ofA==
   dependencies:
     graphql "^15.6.1"
     node-fetch "2.6.7"
@@ -1894,7 +1894,12 @@
   dependencies:
     react-native-webview "11.23.0"
 
-"@trustshare/sdk@0.0.12", "@trustshare/sdk@^0.0.12":
+"@trustshare/sdk@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@trustshare/sdk/-/sdk-1.0.1.tgz#28d28811927a96aeb3c46dad3a410e5a9b0d87f4"
+  integrity sha512-+NR+AihYhK3hZaMSb2n+GyTTxhR28d31ajq0MNPYy+zbuY9676x+QJqeH7lHu8hyz9f6SU4hDOAlkWdLuhEe6w==
+
+"@trustshare/sdk@^0.0.12":
   version "0.0.12"
   resolved "https://registry.npmjs.org/@trustshare/sdk/-/sdk-0.0.12.tgz"
   integrity sha512-Gnfm/LpixsZ9H1DeDjDIJR+aAdQFaKBuPz2AEi2sBd58GMzPPzR8YQY+l0QXNeFYBkq8QbomkgplNifVLm/ruQ==
