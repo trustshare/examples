@@ -49,6 +49,8 @@ This file is used to load each projects environment with your API keys.
 
 ## 👨🏽‍🍳 Recipes
 
+The following recipes provide a glimpse into simple integrations using the trustshare API. For more in-depth support please refer to your Slack developer support channel.
+
 <table>
   <tr>
     <td>
