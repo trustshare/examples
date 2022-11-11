@@ -1,5 +1,27 @@
-# trustshare verification
+<p align="center">
+  <br/>
+  <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
+  <br/>
+  <br/>
+  <strong>API Client</strong>
+  <br/>
+  <i>Simple borderless payments infrastructure for marketplaces.</i>
+  <br/>
+  Embedded fintech done right - whether that's escrow, credit, banking or payments.
+  <br/>
+  Design your payment flow with our borderless API.
+  <br/>
+  <br/>
+  <span>
+    <a href="https://trustshare.co" target="_blank">Home</a>
+    <span> | </span>
+    <a href="https://docs.trustshare.io" target="_blank">Documentation</a>
+    <span> | </span>
+    <a href="https://dashboard.trustshare.io" target="_blank">Dashboard</a>
+  </span>
+</p>
 
+# trustshare verification
 
 ## Install dependencies
 ```bash
