@@ -1,49 +1,106 @@
-# trustshare examples
-A collection of examples using the trustshare api and sdks.
+<p align="center">
+  <br/>
+  <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
+  <br/>
+  <br/>
+  <strong>Example Integrations</strong>
+  <br/>
+  <i>Simple borderless payments infrastructure for marketplaces.</i>
+  <br/>
+  Embedded fintech done right - whether that's escrow, credit, banking or payments.
+  <br/>
+  Design your payment flow with our borderless API.
+  <br/>
+  <br/>
+  <span>
+    <a href="https://trustshare.co" target="_blank">Home</a>
+    <span> | </span>
+    <a href="https://docs.trustshare.io" target="_blank">Documentation</a>
+    <span> | </span>
+    <a href="https://dashboard.trustshare.io" target="_blank">Dashboard</a>
+  </span>
+</p>
 
-We will aim to provide multiple examples of how to use the trustshare api and sdks., with different tech stacks. 
+## 📖 Documentation
 
-Please let us know if you have any questions or suggestions.
+See our in-depth [documentation](https://docs.trustshare.io/guides/getting-started) to learn more about how you can integrate with our platform.
 
-## Dependencies
-To install all dependencies, in the root of the project run
+## 🚀 Quick start
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/trustshare/examples?file=readme.md)
+
+To make the most of these examples, you will need to sign up or log in to the [dashboard](https://dashboard.trustshare.io/) to acquire a **private API key** used to instantiate the API client. You can use our handy [getting started](https://docs.trustshare.io/guides/getting-started) guide that describes setting up your organisation on the [dashboard](https://dashboard.trustshare.io/).
+
+This repository comprises multiple examples of integration approaches for specific use-cases of the trustshare API. To get started, clone the repository and use yarn to install the required dependencies:
 
 ```bash
 yarn
-``` 
-If you dont want to use yarn workspaces, you can use the following command in the separate folders:
-
-```bash
-npm install
 ```
 
-## Workspaces
-The different examples are managed by [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/). Different examples can be run using the following command:
+**N.B.** This repository leverages [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/). All commands should be run from the root.
 
-```bash
-yarn workspace ${workspace_name} dev
-```
-for example
+## 🌳 Environment Variables
 
-```bash
-yarn workspace @nextjs/trustshare-basic-checkout-example dev
-```
+Each example needs your trustshare API keys to run.
 
-Alternatively, you can change directory into each example and run them for that directory using
+Rename the `.env.example.js` file to `.env.js` and fill in the API keys for the string values.
 
-```bash
-npm run dev
-```
+This file is used to load each projects environment with your API keys.
 
-## StackBlitz
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/trustshare/examples?file=readme.md)
+## 👨🏽‍🍳 Recipes
 
-When running in StackBlitz, you will need to change directory into the example folder and install dependencies, as workspaces are not supported. 
+The following recipes provide a glimpse into simple integrations using the trustshare API. For more in-depth support please refer to your Slack developer support channel.
 
-When running the examples in StackBlitz, we recommend using google chrome to test. Other browsers may not work.
-
-## Readme
-Each example has a readme file, which contains instructions on how to run the example. Each example will need API keys to run. 
-
-## Questions / Improvements
-Please let us know if you have any questions or suggestions. We're happy to help.
+<table>
+  <tr>
+    <td>
+      <h3>🛒 Basic Checkout</h3>
+      <p>The basic checkout example sets up a payment intent on the server side. The intent is then consumed by the client to open the trustshare checkout. It uses an example of a shopping cart, where items are passed in to the intent.</p>
+    </td>
+    <td><a href="/examples/basic-checkout">View&nbsp;Example</a></td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+      <h3>🔗 Payment Link</h3>
+      <p>A payment link Payment Intent provisions a short, shareable link that can be used to direct your users to pay. It offers the same settlement mechanism as other Payment Intents and therefore can describe a checkout to many sellers from a single buyer.</p>
+    </td>
+    <td><a href="/examples/payment-link">View&nbsp;Example</a></td>
+  </tr>
+  <tr>
+    <td>
+      <h3>🧾 Invoice</h3>
+      <p>An invoice Payment Intent provisions an invoice, to be fulfilled now or in the future. It offers the same mechanism to describe settlements to multiple sellers from a single buyer.<br/><br/>An invoice Payment Intent requires a "controlled" Project to be created up front via the Create Project endpoint. You can find more information on Projects <a href="https://docs.trustshare.io/guides/projects">here</a></p><p>An invoice intent still requires confirmation by a user via the Client SDK, however no UI will be displayed to the user. Here, we show an example of how an invoice can be handled by once it has been created.</p>
+    </td>
+    <td><a href="/examples/invoice">View&nbsp;Example</a></td>
+  </tr>
+  <tr>
+    <td>
+      <h3>📱 React Native</h3>
+      <p>The expo example shows an integration path for React Native users. The example uses our package <a href="https://www.npmjs.com/package/@trustshare/react-native-sdk">@trustshare/react-native-sdk</a> as a convenient way to implement a checkout or verification flow.</p>
+    </td>
+    <td><a href="/examples/expo">View&nbsp;Example</a></td>
+  </tr>
+  <tr>
+    <td>
+      <h3>🙋‍♂️ Verification</h3>
+      <p>The verification example creates a verification for a user. trustshare offers facilities for verifying the identities and carrying out due diligence on customers which transact on the platform.</p>
+    </td>
+    <td><a href="/examples/verification">View&nbsp;Example</a></td>
+  </tr>
+  <tr>
+    <td>
+      <h3>👨‍👩‍👧 Multiple Participants In a Single Project</h3>
+      The system allows you to take control of projects by creating them up front. These are known as 'controlled' project. This example shows how a controlled project can be used to define a payment flow with multiple participants all paying into the same project.</p><p>Controlled project are very powerful and unlock many different flows. For example, you could issue a Project for a repeat buyer on your system so they have a consistent set of account credentials to pay into.
+    </td>
+    <td><a href="/examples/multiple-participants-single-project">View&nbsp;Example</a></td>
+  </tr>
+  <tr>
+    <td>
+      <h3>➡️ Direct Checkout</h3>
+      <p>
+A direct checkout facilitates a payment between 2 parties. The example sets up a direct checkout. No server side intent is needed for direct checkouts.</p>
+    </td>
+    <td><a href="/examples/direct-checkout">View&nbsp;Example</a></td>
+  </tr>
+</table>
