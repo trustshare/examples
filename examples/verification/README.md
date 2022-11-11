@@ -3,7 +3,7 @@
   <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
   <br/>
   <br/>
-<strong>Example - 🙋‍♂️ Verification</strong>
+<strong>Example - Verification</strong>
   <br/>
   <i>Simple borderless payments infrastructure for marketplaces.</i>
   <br/>
