@@ -3,7 +3,7 @@
   <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
   <br/>
   <br/>
-<strong>Verification</strong>
+<strong>Example - 🙋‍♂️ Verification</strong>
   <br/>
   <i>Simple borderless payments infrastructure for marketplaces.</i>
   <br/>
@@ -20,6 +20,9 @@
     <a href="https://dashboard.trustshare.io" target="_blank">Dashboard</a>
   </span>
 </p>
+
+## 📖 Introduction
+The verification example creates a verification for a user. trustshare offers facilities for verifying the identities and carrying out due diligence on customers which transact on the platform.
 
 ## 🌳 Environment Variables
 

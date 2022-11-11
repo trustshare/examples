@@ -36,14 +36,17 @@ This repository comprises multiple examples of integration approaches for specif
 ```bash
 yarn
 ```
+
 **N.B.** This repository leverages [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/). All commands should be run from the root.
 
 ## 🌳 Environment Variables
-Each example needs your trustshare API keys to run. 
+
+Each example needs your trustshare API keys to run.
 
 Rename the `.env.example.js` file to `.env.js` and fill in the API keys for the string values.
 
 This file is used to load each projects environment with your API keys.
+
 ## 👨🏽‍🍳 Recipes
 
 <table>
@@ -93,7 +96,8 @@ This file is used to load each projects environment with your API keys.
   <tr>
     <td>
       <h3>Direct Checkout</h3>
-      A direct checkout facilitates a payment between 2 parties. The example sets up a payment intent on the server side, which is then consumed by the client to open the trustshare direct checkout.
+      <p>
+A direct checkout facilitates a payment between 2 parties. The example sets up a direct checkout. No server side intent is needed for direct checkouts.</p>
     </td>
     <td><a href="/examples/direct-checkout">View Example</a></td>
   </tr>

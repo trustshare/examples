@@ -3,7 +3,7 @@
   <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
   <br/>
   <br/>
-<strong>Payment link</strong>
+<strong>Example - 🔗 Payment link</strong>
   <br/>
   <i>Simple borderless payments infrastructure for marketplaces.</i>
   <br/>
@@ -20,6 +20,10 @@
     <a href="https://dashboard.trustshare.io" target="_blank">Dashboard</a>
   </span>
 </p>
+
+
+## 📖 Introduction
+A payment link Payment Intent provisions a short, shareable link that can be used to direct your users to pay. It offers the same settlement mechanism as other Payment Intents and therefore can describe a checkout to many sellers from a single buyer.
 
 ## 🌳 Environment Variables
 

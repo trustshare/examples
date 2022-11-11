@@ -3,7 +3,7 @@
   <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
   <br/>
   <br/>
-  <strong>trustshare basic checkout</strong>
+  <strong>Example - 🛒 Basic Checkout</strong>
   <br/>
   <i>Simple borderless payments infrastructure for marketplaces.</i>
   <br/>
@@ -21,8 +21,11 @@
   </span>
 </p>
 
-## 🌳 Environment Variables
 
+## 📖 Introduction
+The basic checkout example sets up a payment intent on the server side. The intent is then consumed by the client to open the trustshare checkout. It uses an example of a shopping cart, where items are passed in to the intent.
+
+## 🌳 Environment Variables
 Please make sure you have followed the setup instructions in the [README](/README.md) in the root of the repository.
 
 ## 🚀 Quick start

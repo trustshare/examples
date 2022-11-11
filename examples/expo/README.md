@@ -3,7 +3,7 @@
   <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
   <br/>
   <br/>
-  <strong>React Native</strong>
+  <strong>Example - 📱 React Native</strong>
   <br/>
   <i>Simple borderless payments infrastructure for marketplaces.</i>
   <br/>
@@ -21,6 +21,8 @@
   </span>
 </p>
 
+## 📖 Introduction
+The expo example shows an integration path for React Native users. The example uses our package [@trustshare/react-native-sdk](https://www.npmjs.com/package/@trustshare/react-native-sdk) as a convenient way to implement a checkout or verification flow.
 
 ## 🌳 Environment Variables
 

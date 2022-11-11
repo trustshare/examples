@@ -3,7 +3,7 @@
   <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
   <br/>
   <br/>
-  <strong>Direct Checkout</strong>
+  <strong>Example - ➡️ Direct Checkout</strong>
   <br/>
   <i>Simple borderless payments infrastructure for marketplaces.</i>
   <br/>
@@ -21,6 +21,8 @@
   </span>
 </p>
 
+## 📖 Introduction
+A direct checkout facilitates a payment between 2 parties. The example sets up a direct checkout. No server side intent is needed for direct checkouts.
 
 ## 🌳 Environment Variables
 
