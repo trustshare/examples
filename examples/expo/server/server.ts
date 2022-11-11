@@ -33,8 +33,18 @@ fastify.get("/createPaymentIntent", async (request, reply) => {
 fastify.get("/createVerificationIntent", async (request, reply) => {
   const randomNumber = () => Math.random().toString(36).slice(2);
   const res = await trustshare.api.v1.createVerification({
-    email: `simon+api+verify+${randomNumber()}@trustshare.co`,
+    email: `sink+${randomNumber()}@trustshare.co`,
+    name: "Rufus McGuire",
+    type: "individual",
+    address: {
+      address_line_1: "1 Address Lane",
+      town_city: "Address Town",
+      region: "Surrey",
+      postal_code: "GU10 3PL",
+      country: "GB",
+    },
   });
+
   // curl GET example
   // curl -X GET http://localhost:9987/createVerificationIntent
   reply.type("application/json").code(200);
