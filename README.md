@@ -36,9 +36,12 @@ This repository comprises multiple examples of integration approaches for specif
 ```bash
 yarn
 ```
-
 **N.B.** This repository leverages [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/). All commands should be run from the root.
 
+## 🌳 Environment Variables
+Each project needs to be setup with environment variables which contain your trustshare private and public API keys.
+
+See the individual example readme for instructions on how to do this.
 ## 👨🏽‍🍳 Recipes
 
 <table>

@@ -3,7 +3,7 @@
   <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
   <br/>
   <br/>
-  <strong>API Client</strong>
+  <strong>trustshare basic checkout</strong>
   <br/>
   <i>Simple borderless payments infrastructure for marketplaces.</i>
   <br/>
@@ -21,25 +21,26 @@
   </span>
 </p>
 
-# trustshare basic checkout
+## 🚀 Quick start
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/trustshare/examples/basic-checkout?file=readme.md)
 
-## Install dependencies
+From the root folder run
+
 ```bash
-npm i
-# or yarn
-yarn 
+yarn
 ```
 
-## Add API Keys
-Rename the `.env.example` file to `.env.local` and add your API keys. 
+## 🌳 Environment Variables
+
+Rename the `.env.example` file to `.env.local` and add your API keys, as per the example.
 
 There is a guide on how to generate API keys [here](https://docs.trustshare.io/guides/getting-started#generate-an-api-key).
 
+## 🏃‍♂️ Run the app
 
-## To run the app in dev mode
+From the root folder run
+
 ```bash
-npm run dev
-# or yarn
-yarn dev
+yarn workspace @examples/basic-checkout run dev
 ```
