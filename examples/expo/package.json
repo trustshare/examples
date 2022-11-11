@@ -15,7 +15,7 @@
     "server": "tsx ./server/server.ts"
   },
   "dependencies": {
-    "@trustshare/react-native-sdk": "0.0.1",
+    "@trustshare/react-native-sdk": "1.0.0",
     "dotenv": "16.0.3",
     "expo": "~46.0.16",
     "expo-status-bar": "~1.4.0",

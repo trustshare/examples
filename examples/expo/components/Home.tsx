@@ -1,17 +1,23 @@
-import React from 'react';
-import { Button, SafeAreaView, View, StyleSheet } from 'react-native';
-import { Checkout } from '@trustshare/react-native-sdk';
-import { Verify } from '@trustshare/react-native-sdk';
+import React, { useState } from "react";
+import { Button, SafeAreaView, View, StyleSheet } from "react-native";
+import { Checkout } from "@trustshare/react-native-sdk";
+import { Verify } from "@trustshare/react-native-sdk";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../types";
 
-export const HomeScreen = () => {
-  const [paymentClientSecret, setPaymentClientSecret] = React.useState<
+type Props = NativeStackScreenProps<RootStackParamList, "Home">;
+
+export const Home = ({ navigation }: Props) => {
+  const [paymentClientSecret, setPaymentClientSecret] = useState<string | null>(
+    null
+  );
+
+  const [verificationClientSecret, setVerificationClientSecret] = useState<
     string | null
   >(null);
-  const [verificationClientSecret, setVerificationClientSecret] =
-    React.useState<string | null>(null);
 
   function createPaymentIntent() {
-    fetch('http://localhost:9987/createPaymentIntent')
+    fetch("http://localhost:9987/createPaymentIntent")
       .then((res) => res.json())
       .then((res) => {
         setPaymentClientSecret(res.client_secret);
@@ -19,7 +25,7 @@ export const HomeScreen = () => {
   }
 
   function createVerificationIntent() {
-    fetch('http://localhost:9987/createVerificationIntent')
+    fetch("http://localhost:9987/createVerificationIntent")
       .then((res) => res.json())
       .then((res) => {
         setVerificationClientSecret(res.client_secret);
@@ -31,27 +37,32 @@ export const HomeScreen = () => {
       <View style={styles.container}>
         {paymentClientSecret && (
           <Checkout
-            options={{ __BASE_URL: '.nope.sh' }}
             clientSecret={paymentClientSecret}
             onCancel={() => {
-              console.log('Payment cancelled');
+              console.log("Payment cancelled");
             }}
             onComplete={(args) => {
-              console.log('Payment complete!');
+              console.log("Payment complete!");
               console.log(args.checkout_id);
               console.log(args.project_id);
               setPaymentClientSecret(null);
+              navigation.navigate("Complete", {
+                checkout_id: args.checkout_id,
+                project_id: args.project_id,
+              });
             }}
           />
         )}
         {verificationClientSecret && (
           <Verify
-            options={{ __BASE_URL: '.nope.sh' }}
             clientSecret={verificationClientSecret}
             onComplete={(args) => {
-              console.log('Verification complete!');
+              console.log("Verification complete!");
               console.log(args.verification_id);
               setVerificationClientSecret(null);
+              navigation.navigate("Complete", {
+                verification_id: args.verification_id,
+              });
             }}
           />
         )}
@@ -75,13 +86,13 @@ export const HomeScreen = () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   safeArea: {
     flex: 1,

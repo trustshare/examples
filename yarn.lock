@@ -1982,10 +1982,10 @@
     graphql "^15.6.1"
     node-fetch "2.6.7"
 
-"@trustshare/react-native-sdk@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@trustshare/react-native-sdk/-/react-native-sdk-0.0.1.tgz#d1bc8e5823d096d8580bbcc50d980ee42d092b7b"
-  integrity sha512-vekSR0Cr4JOostUIwxZeSfaA6Wh8mMrXTJ6gE4iiOOcskzqp2wx/+DdBcmy5bwHhbchpeBmOUBVloyRstCV16g==
+"@trustshare/react-native-sdk@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@trustshare/react-native-sdk/-/react-native-sdk-1.0.0.tgz#6a1e0727e36435ade07ec5b4638297e7edb9b034"
+  integrity sha512-u00Re7cDjbJjMSEdGBwECSbqL6eQOyzmbVM5XQD2m0PKb4PEmnfdFGOYv5mZRqC4tSW9yCautJAcBoVof3cXDg==
   dependencies:
     react-native-webview "11.23.0"
 

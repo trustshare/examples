@@ -8,10 +8,9 @@ import ts from "@trustshare/api";
 import * as dotenv from "dotenv";
 dotenv.config();
 
+//  TODO: Replace the base URL.
 // Create the trustshare sdk
-const trustshare = ts(process.env.TRUSTSHARE_PRIVATE_API_KEY ?? "", {
-  __BASE_URL: ".nope.sh",
-});
+const trustshare = ts(process.env.TRUSTSHARE_PRIVATE_API_KEY ?? "");
 
 const fastify = Fastify({
   logger: true,
