@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@trustshare/react-native-sdk": "1.0.0",
-    "dotenv": "16.0.3",
     "expo": "~46.0.16",
     "expo-status-bar": "~1.4.0",
     "fastify": "^4.9.2",

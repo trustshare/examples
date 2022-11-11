@@ -16,6 +16,6 @@
     ]
   },
   "dependencies": {
-    "@trustshare/sdk": "^0.0.12"
+    "find-workspace-root": "1.0.1"
   }
 }

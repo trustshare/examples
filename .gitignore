@@ -35,3 +35,4 @@ yarn-error.log*
 *.tsbuildinfo
 
 **/node_modules/*
+.env.js

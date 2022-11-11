@@ -21,25 +21,13 @@
   </span>
 </p>
 
-## 🚀 Quick start
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/trustshare/examples/basic-checkout?file=readme.md)
-
-From the root folder run
-
-```bash
-yarn
-```
-
 ## 🌳 Environment Variables
 
-Rename the `.env.example` file to `.env.local` and add your API keys, as per the example.
+Please make sure you have followed the setup instructions in the [README](/README.md) in the root of the repository.
 
-There is a guide on how to generate API keys [here](https://docs.trustshare.io/guides/getting-started#generate-an-api-key).
+## 🚀 Quick start
 
-## 🏃‍♂️ Run the app
-
-From the root folder run
+From the root run
 
 ```bash
 yarn workspace @examples/basic-checkout run dev

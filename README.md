@@ -39,9 +39,11 @@ yarn
 **N.B.** This repository leverages [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/). All commands should be run from the root.
 
 ## 🌳 Environment Variables
-Each project needs to be setup with environment variables which contain your trustshare private and public API keys.
+Each example needs your trustshare API keys to run. 
 
-See the individual example readme for instructions on how to do this.
+Rename the `.env.example.js` file to `.env.js` and fill in the API keys for the string values.
+
+This file is used to load each projects environment with your API keys.
 ## 👨🏽‍🍳 Recipes
 
 <table>

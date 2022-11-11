@@ -3,7 +3,7 @@
   <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
   <br/>
   <br/>
-  <strong>API Client</strong>
+<strong>Payment link</strong>
   <br/>
   <i>Simple borderless payments infrastructure for marketplaces.</i>
   <br/>
@@ -21,25 +21,14 @@
   </span>
 </p>
 
-# trustshare payment link
+## 🌳 Environment Variables
 
+Please make sure you have followed the setup instructions in the [README](/README.md) in the root of the repository.
 
-## Install dependencies
+## 🚀 Quick start
+
+From the root run
+
 ```bash
-npm i
-# or yarn
-yarn 
-```
-
-## Add API Keys
-Rename the `.env.example` file to `.env.local` and add your API keys. 
-
-There is a guide on how to generate API keys [here](https://docs.trustshare.io/guides/getting-started#generate-an-api-key).
-
-
-## To run the app in dev mode
-```bash
-npm run dev
-# or yarn
-yarn dev
+yarn workspace @examples/payment-link dev
 ```

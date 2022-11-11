@@ -1,16 +1,11 @@
 // ESM
 import Fastify from "fastify";
-
-import type { ParticipantType } from "@trustshare/api";
 import ts from "@trustshare/api";
-
-// This will get the environment variables from the .env file
-import * as dotenv from "dotenv";
-dotenv.config();
+import env from "../../../.env";
 
 //  TODO: Replace the base URL.
 // Create the trustshare sdk
-const trustshare = ts(process.env.TRUSTSHARE_PRIVATE_API_KEY ?? "");
+const trustshare = ts(env.TRUSTSHARE_PRIVATE_API_KEY ?? "");
 
 const fastify = Fastify({
   logger: true,

@@ -3,7 +3,7 @@
   <img width="400px" src="https://assets.staging.trustshare.io/trustshare-logo.png">
   <br/>
   <br/>
-  <strong>API Client</strong>
+  <strong>React Native</strong>
   <br/>
   <i>Simple borderless payments infrastructure for marketplaces.</i>
   <br/>
@@ -21,40 +21,19 @@
   </span>
 </p>
 
-# trustshare expo
 
+## 🌳 Environment Variables
 
-## Install dependencies
+Please make sure you have followed the setup instructions in the [README](/README.md) in the root of the repository.
+
+## 🚀 Quick start
+
+From the root run
+
 ```bash
-npm i
-# or yarn
-yarn 
-```
+# In one terminal window..
+yarn workspace @examples/expo run server
 
-## Add API Keys
-Rename the `.env.example` file to `.env` and add your API keys. 
-
-There is a guide on how to generate API keys [here](https://docs.trustshare.io/guides/getting-started#generate-an-api-key).
-
-
-## Running the server.
-The server uses the api keys you have set up in the previous step to generate intents. It will not work without the API keys. 
-
-Once the intents have been generated the client secret should be passed to the app. 
-
-The client then uses the client secret to consume the intent and open a checkout or a verification.
-
-
-## To run the iOS app 
-```bash
-npm run ios
-# or yarn
-yarn ios
-```
-
-## To run the iOS app 
-```bash
-npm run android
-# or yarn
-yarn android
+# In a different terminal window
+yarn workspace @examples/expo run ios
 ```
