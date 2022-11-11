@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { Button, SafeAreaView, View, StyleSheet } from "react-native";
-import { Checkout } from "@trustshare/react-native-sdk";
-import { Verify } from "@trustshare/react-native-sdk";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Checkout, Verify } from "@trustshare/react-native-sdk";
+import React, { useState } from "react";
+import { Button, SafeAreaView, StyleSheet, View } from "react-native";
 import { RootStackParamList } from "../types";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;

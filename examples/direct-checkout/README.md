@@ -33,3 +33,5 @@ From the root run
 ```bash
 yarn workspace @examples/direct-checkout run dev
 ```
+
+Once the server is up and running, open `http://localhost:3000` to get started.
