@@ -61,9 +61,10 @@ The following recipes provide a glimpse into simple integrations using the trust
   </tr>
   <tr>
     <td>
-      <p>
       <h3>🔗 Payment Link</h3>
-      <p>A payment link Payment Intent provisions a short, shareable link that can be used to direct your users to pay. It offers the same settlement mechanism as other Payment Intents and therefore can describe a checkout to many sellers from a single buyer.</p>
+      <p>
+      A payment link Payment Intent provisions a short, shareable link that can be used to direct your users to pay. It offers the same settlement mechanism as other Payment Intents and therefore can describe a checkout to many sellers from a single buyer.
+      </p>
     </td>
     <td><a href="/examples/payment-link">View&nbsp;Example</a></td>
   </tr>
@@ -91,7 +92,8 @@ The following recipes provide a glimpse into simple integrations using the trust
   <tr>
     <td>
       <h3>👨‍👩‍👧 Multiple Participants In a Single Project</h3>
-      The system allows you to take control of projects by creating them up front. These are known as 'controlled' project. This example shows how a controlled project can be used to define a payment flow with multiple participants all paying into the same project.</p><p>Controlled project are very powerful and unlock many different flows. For example, you could issue a Project for a repeat buyer on your system so they have a consistent set of account credentials to pay into.
+      <p>
+      The system allows you to take control of projects by creating them up front. These are known as 'controlled' project. This example shows how a controlled project can be used to define a payment flow with multiple participants all paying into the same project.</p><p>Controlled project are very powerful and unlock many different flows. For example, you could issue a Project for a repeat buyer on your system so they have a consistent set of account credentials to pay into.</p>
     </td>
     <td><a href="/examples/multiple-participants-single-project">View&nbsp;Example</a></td>
   </tr>
