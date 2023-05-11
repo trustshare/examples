@@ -36,6 +36,9 @@ export const Home = ({ navigation }: Props) => {
       <View style={styles.container}>
         {paymentClientSecret && (
           <Checkout
+            options={{
+              __BASE_URL: ".nope.sh",
+            }}
             clientSecret={paymentClientSecret}
             onCancel={() => {
               console.log("Payment cancelled");
@@ -54,6 +57,9 @@ export const Home = ({ navigation }: Props) => {
         )}
         {verificationClientSecret && (
           <Verify
+            options={{
+              __BASE_URL: ".nope.sh",
+            }}
             clientSecret={verificationClientSecret}
             onComplete={(args) => {
               console.log("Verification complete!");

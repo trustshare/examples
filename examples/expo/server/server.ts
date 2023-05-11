@@ -5,7 +5,11 @@ import env from "../../../.env";
 
 //  TODO: Replace the base URL.
 // Create the trustshare sdk
-const trustshare = ts(env.TRUSTSHARE_PRIVATE_API_KEY ?? "");
+const trustshare = ts(env.TRUSTSHARE_PRIVATE_API_KEY ?? "", {
+  __BASE_URL: ".nope.sh",
+});
+
+console.log("env.TRUSTSHARE_PRIVATE_API_KEY", env.TRUSTSHARE_PRIVATE_API_KEY);
 
 const fastify = Fastify({
   logger: true,
