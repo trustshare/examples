@@ -122,7 +122,7 @@ export async function getPaymentIntent() {
           bank_account: {
             country: "EG",
             currency: "egp",
-            iban: "FR1420041010050500013M02606",
+            iban: 'EG800002000156789012345180002',
             bic_swift: "PSSTFRPPLIL",
           },
         },
