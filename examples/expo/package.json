@@ -15,7 +15,7 @@
     "server": "tsx watch ./server/server.ts"
   },
   "dependencies": {
-    "@trustshare/react-native-sdk": "^1.0.1",
+    "@trustshare/react-native-sdk": "2.0.0",
     "expo": "^48.0.11",
     "expo-status-bar": "^1.4.4",
     "fastify": "^4.9.2",
@@ -26,7 +26,8 @@
     "@react-navigation/native-stack": "^6.9.12",
     "react-native-safe-area-context": "^4.5.1",
     "react-native-screens": "^3.20.0",
-    "react-native-web": "^0.19.4"
+    "react-native-web": "^0.19.4",
+    "react-native-webview": ">= 11.26.0 < 12"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

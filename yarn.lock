@@ -2346,12 +2346,10 @@
     graphql "^15.6.1"
     node-fetch "2.6.7"
 
-"@trustshare/react-native-sdk@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@trustshare/react-native-sdk/-/react-native-sdk-1.0.1.tgz#0936f2f41de68ce4a5ebbbabe742ab921239063f"
-  integrity sha512-Qt7xuz9TsdCcK16Z14zQEM9nwucuhz1/jj2ADzz9L3P8JI8QbRYiumRMITd1tX7TrvuWtEcu2eJimxf3Onw51A==
-  dependencies:
-    react-native-webview "11.23.0"
+"@trustshare/react-native-sdk@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@trustshare/react-native-sdk/-/react-native-sdk-2.0.0.tgz#1d0b634411cf1dac7d2fcf0809317ccdf6b026ab"
+  integrity sha512-xG++2OIhjGUh/iHnTIVnzEgKG+Z00NwOpdqm5lA2waAIuU4nrPUwkZFkYJsaAFjEngFbzCSMo0vKhcokdgUr0Q==
 
 "@trustshare/sdk@1.0.1":
   version "1.0.1"
@@ -7477,10 +7475,10 @@ react-native-web@^0.19.4:
     postcss-value-parser "^4.2.0"
     styleq "^0.1.2"
 
-react-native-webview@11.23.0:
-  version "11.23.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.23.0.tgz#603a584236da2e993906e6a094f165dcac3a1fdb"
-  integrity sha512-mGrgsMnYcQONvQy59xpBn87sKqkCsSkqIDRo+c2Ov4ISYl1j90wFBs+qViVJRWdoNHVuoCAZ4nZkJ65mhDpHhA==
+"react-native-webview@>= 11.26.0 < 12":
+  version "11.26.1"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.26.1.tgz#658c09ed5162dc170b361e48c2dd26c9712879da"
+  integrity sha512-hC7BkxOpf+z0UKhxFSFTPAM4shQzYmZHoELa6/8a/MspcjEP7ukYKpuSUTLDywQditT8yI9idfcKvfZDKQExGw==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
