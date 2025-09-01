@@ -13,7 +13,7 @@
     "@trustshare/sdk": "1.0.21",
     "@headlessui/react": "^1.6.0",
     "@heroicons/react": "^1.0.6",
-    "next": "^12.1.0",
+    "next": "^14.2.32",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },
